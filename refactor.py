@@ -141,10 +141,10 @@ def process_player_directory(player_dir: str, player_first: str, player_last: st
         print(f"❌ Directory not found: {player_dir}")
         return
 
-
+    # --- Step 1: Update URL mapping CSV ---
     update_url_mapping_csv(player_dir, player_first, player_last, uncertain_files)
 
-
+    # --- Step 2: Process all .mp4 and .json files recursively ---
     for root, _, files in os.walk(player_dir):
         for file in files:
             if file.lower().endswith((".mp4", ".json")):
